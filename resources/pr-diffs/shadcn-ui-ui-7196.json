@@ -1,0 +1,26 @@
+{
+  "repoFullName": "shadcn-ui/ui",
+  "prNumber": 7196,
+  "prTitle": "fix: do not throw for empty dir",
+  "prBody": "",
+  "prUrl": "https://github.com/shadcn-ui/ui/pull/7196",
+  "totalAdditions": 5,
+  "totalDeletions": 1,
+  "totalFiles": 2,
+  "files": [
+    {
+      "filename": ".changeset/few-kangaroos-stare.md",
+      "status": "added",
+      "additions": 5,
+      "deletions": 0,
+      "patch": "diff --git a/.changeset/few-kangaroos-stare.md b/.changeset/few-kangaroos-stare.md\nnew file mode 100644\nindex 00000000000..e97e5e12b7a\n--- /dev/null\n+++ b/.changeset/few-kangaroos-stare.md\n@@ -0,0 +1,5 @@\n+---\n+\"shadcn\": patch\n+---\n+\n+do not throw if empty dir"
+    },
+    {
+      "filename": "packages/shadcn/src/utils/get-project-info.ts",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "patch": "diff --git a/packages/shadcn/src/utils/get-project-info.ts b/packages/shadcn/src/utils/get-project-info.ts\nindex 6236b5138cb..05f04df8216 100644\n--- a/packages/shadcn/src/utils/get-project-info.ts\n+++ b/packages/shadcn/src/utils/get-project-info.ts\n@@ -154,7 +154,7 @@ export async function getTailwindVersion(\n   cwd: string\n ): Promise {\n   const [packageInfo, config] = await Promise.all([\n-    getPackageInfo(cwd),\n+    getPackageInfo(cwd, false),\n     getConfig(cwd),\n   ])"
+    }
+  ]
+}

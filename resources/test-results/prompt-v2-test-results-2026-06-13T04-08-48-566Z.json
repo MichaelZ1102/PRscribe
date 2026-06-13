@@ -1,0 +1,134 @@
+{
+  "promptVersion": "v2",
+  "testedAt": "2026-06-13T04:08:48.567Z",
+  "totalPRs": 12,
+  "structuralAnalysis": {
+    "avgSectionCoverage": "100%",
+    "avgTokenEstimate": 1619,
+    "cleanPRs": 12,
+    "remainingIssues": []
+  },
+  "llmInference": null,
+  "results": [
+    {
+      "pr": "biomejs/biome#4500",
+      "title": "chore(deps): update codspeedhq/action action to v3.1.0",
+      "type": "chore: dependency update",
+      "files": 1,
+      "changes": "+1/-1",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 760,
+      "issues": []
+    },
+    {
+      "pr": "colinhacks/zod#3800",
+      "title": "Add 'schemql' in Powered by Zod",
+      "type": "docs: trivial",
+      "files": 1,
+      "changes": "+1/-0",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 848,
+      "issues": []
+    },
+    {
+      "pr": "honojs/hono#3685",
+      "title": "feat(css): add CSP nonce to hono/css related style and scrip",
+      "type": "feat",
+      "files": 7,
+      "changes": "+121/-13",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 3243,
+      "issues": []
+    },
+    {
+      "pr": "microsoft/TypeScript#48283",
+      "title": "fix(48277): Add parameter type inlay hints after ? operator",
+      "type": "feat",
+      "files": 2,
+      "changes": "+24/-1",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 910,
+      "issues": []
+    },
+    {
+      "pr": "prisma/prisma#26000",
+      "title": "chore(deps): update engines to 6.3.0-3.169dafafad6963cbb0345",
+      "type": "chore: dependency update",
+      "files": 7,
+      "changes": "+30/-30",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 3196,
+      "issues": []
+    },
+    {
+      "pr": "shadcn-ui/ui#6965",
+      "title": "fix: allow silent mode with npm on React 19",
+      "type": "fix",
+      "files": 2,
+      "changes": "+9/-5",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 1191,
+      "issues": []
+    },
+    {
+      "pr": "shadcn-ui/ui#7196",
+      "title": "fix: do not throw for empty dir",
+      "type": "fix",
+      "files": 2,
+      "changes": "+5/-1",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 821,
+      "issues": []
+    },
+    {
+      "pr": "trpc/trpc#6000",
+      "title": "fix(deps): update dependency arktype2 to v2.0.0-rc.8",
+      "type": "chore: dependency update",
+      "files": 2,
+      "changes": "+12/-12",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 1239,
+      "issues": []
+    },
+    {
+      "pr": "vitejs/vite#20163",
+      "title": "PR #20163",
+      "type": "other",
+      "files": 9,
+      "changes": "+181/-7",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 4117,
+      "issues": []
+    },
+    {
+      "pr": "vitejs/vite#9262",
+      "title": "fix: don't modify config during resolution",
+      "type": "fix",
+      "files": 1,
+      "changes": "+86/-86",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 1021,
+      "issues": []
+    },
+    {
+      "pr": "vitejs/vite#9399",
+      "title": "fix: url constructor import asset no as url",
+      "type": "fix",
+      "files": 4,
+      "changes": "+15/-1",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 1292,
+      "issues": []
+    },
+    {
+      "pr": "vitejs/vite#9425",
+      "title": "fix(glob): server perf when globbing huge dirs",
+      "type": "fix",
+      "files": 1,
+      "changes": "+4/-4",
+      "sectionCoverage": "11/11",
+      "tokenEstimate": 794,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "repoFullName": "vitejs/vite",
+  "prNumber": 9425,
+  "prTitle": "fix(glob): server perf when globbing huge dirs",
+  "prBody": "",
+  "prUrl": "https://github.com/vitejs/vite/pull/9425",
+  "totalAdditions": 4,
+  "totalDeletions": 4,
+  "totalFiles": 1,
+  "files": [
+    {
+      "filename": "packages/vite/src/node/plugins/importMetaGlob.ts",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 4,
+      "patch": "diff --git a/packages/vite/src/node/plugins/importMetaGlob.ts b/packages/vite/src/node/plugins/importMetaGlob.ts\nindex e6512dbcd6724b..aef833e3879888 100644\n--- a/packages/vite/src/node/plugins/importMetaGlob.ts\n+++ b/packages/vite/src/node/plugins/importMetaGlob.ts\n@@ -74,10 +74,6 @@ export function importGlobPlugin(config: ResolvedConfig): Plugin {\n       if (server) {\n         const allGlobs = result.matches.map((i) => i.globsResolved)\n         server._importGlobMap.set(id, allGlobs)\n-        result.files.forEach((file) => {\n-          // update watcher\n-          server!.watcher.add(dirname(file))\n-        })\n       }\n       return transformStableResult(result.s, id, config)\n     }"
+    }
+  ]
+}

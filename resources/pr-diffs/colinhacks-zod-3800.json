@@ -1,0 +1,19 @@
+{
+  "repoFullName": "colinhacks/zod",
+  "prNumber": 3800,
+  "prTitle": "Add 'schemql' in Powered by Zod",
+  "prBody": "",
+  "prUrl": "https://github.com/colinhacks/zod/pull/3800",
+  "totalAdditions": 1,
+  "totalDeletions": 0,
+  "totalFiles": 1,
+  "files": [
+    {
+      "filename": "README.md",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0,
+      "patch": "diff --git a/README.md b/README.md\nindex a721693b1e..e7032711f5 100644\n--- a/README.md\n+++ b/README.md\n@@ -538,6 +538,7 @@ There are a growing number of tools that are built atop or support Zod natively!\n \n - [`freerstore`](https://github.com/JacobWeisenburger/freerstore): Firestore cost optimizer.\n - [`slonik`](https://github.com/gajus/slonik/tree/gajus/add-zod-validation-backwards-compatible#runtime-validation-and-static-type-inference): Node.js Postgres client with strong Zod integration.\n+- [`schemql`](https://github.com/a2lix/schemql): Enhances your SQL workflow by combining raw SQL with targeted type safety and schema validation.\n - [`soly`](https://github.com/mdbetancourt/soly): Create CLI applications with zod.\n - [`pastel`](https://github.com/vadimdemedes/pastel): Create CLI applications with react, zod, and ink.\n - [`zod-xlsx`](https://github.com/sidwebworks/zod-xlsx): A xlsx based resource validator using Zod schemas.\n"
+    }
+  ]
+}

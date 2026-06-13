@@ -1,0 +1,40 @@
+{
+  "repoFullName": "vitejs/vite",
+  "prNumber": 9399,
+  "prTitle": "fix: url constructor import asset no as url",
+  "prBody": "",
+  "prUrl": "https://github.com/vitejs/vite/pull/9399",
+  "totalAdditions": 15,
+  "totalDeletions": 1,
+  "totalFiles": 4,
+  "files": [
+    {
+      "filename": "packages/vite/src/node/plugins/assetImportMetaUrl.ts",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "patch": "diff --git a/packages/vite/src/node/plugins/assetImportMetaUrl.ts b/packages/vite/src/node/plugins/assetImportMetaUrl.ts\nindex 6d7a657706cf9c..4b52a225a68458 100644\n--- a/packages/vite/src/node/plugins/assetImportMetaUrl.ts\n+++ b/packages/vite/src/node/plugins/assetImportMetaUrl.ts\n@@ -55,7 +55,7 @@ export function assetImportMetaUrlPlugin(config: ResolvedConfig): Plugin {\n       s.overwrite(\n         index,\n         index + exp.length,\n-        `new URL((import.meta.glob(${pattern}, { eager: true, import: 'default' }))[${rawUrl}], self.location)`,\n+        `new URL((import.meta.glob(${pattern}, { eager: true, import: 'default', as: 'url' }))[${rawUrl}], self.location)`,\n         { contentOnly: true }\n       )\n       continue"
+    },
+    {
+      "filename": "playground/assets/__tests__/assets.spec.ts",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 0,
+      "patch": "diff --git a/playground/assets/__tests__/assets.spec.ts b/playground/assets/__tests__/assets.spec.ts\nindex 5b265578e98751..600ea3b0bba971 100644\n--- a/playground/assets/__tests__/assets.spec.ts\n+++ b/playground/assets/__tests__/assets.spec.ts\n@@ -288,6 +288,9 @@ test('new URL(`${dynamic}`, import.meta.url)', async () => {\n   expect(await page.textContent('.dynamic-import-meta-url-2')).toMatch(\n     assetMatch\n   )\n+  expect(await page.textContent('.dynamic-import-meta-url-js')).toMatch(\n+    isBuild ? 'data:application/javascript;base64' : '/foo/nested/test.js'\n+  )\n })"
+    },
+    {
+      "filename": "playground/assets/index.html",
+      "status": "modified",
+      "additions": 8,
+      "deletions": 0,
+      "patch": "diff --git a/playground/assets/index.html b/playground/assets/index.html\nindex a741379e82013e..5a49d42791d058 100644\n--- a/playground/assets/index.html\n+++ b/playground/assets/index.html\n@@ -199,6 +199,9 @@\n       <h2>new URL(`./${dynamic}`, import.meta.url)</h2>\n       <p class=\"dynamic-import-meta-url-2\"></p>\n \n+      <h2>new URL(`./nested/${name}.js`, import.meta.url)</h2>\n+      <p class=\"dynamic-import-meta-url-js\"></p>\n+\n       <h2>new URL(`./${dynamic}`, import.meta.url,) (with comma)</h2>\n       <p class=\"dynamic-import-meta-url-3\"></p>\n \n@@ -390,6 +393,10 @@\n       testDynamicImportMetaUrlWithComma('icon', 1)\n       testDynamicImportMetaUrlWithComma('asset', 2)\n \n+      const name = 'test'\n+      const js = new URL(`./nested/${name}.js`, import.meta.url).href\n+      text('.dynamic-import-meta-url-js', js)\n+\n       function text(el, text) {\n         document.querySelector(el).textContent = text\n       }"
+    },
+    {
+      "filename": "playground/assets/nested/test.js",
+      "status": "added",
+      "additions": 3,
+      "deletions": 0,
+      "patch": "diff --git a/playground/assets/nested/test.js b/playground/assets/nested/test.js\nnew file mode 100644\nindex 00000000000000..1a292f36ac7916\n--- /dev/null\n+++ b/playground/assets/nested/test.js\n@@ -0,0 +1,3 @@\n+export default class a {\n+  name = 'a'\n+}"
+    }
+  ]
+}

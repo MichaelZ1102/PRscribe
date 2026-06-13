@@ -1,0 +1,26 @@
+{
+  "repoFullName": "microsoft/TypeScript",
+  "prNumber": 48283,
+  "prTitle": "fix(48277): Add parameter type inlay hints after ? operator",
+  "prBody": "",
+  "prUrl": "https://github.com/microsoft/TypeScript/pull/48283",
+  "totalAdditions": 24,
+  "totalDeletions": 1,
+  "totalFiles": 2,
+  "files": [
+    {
+      "filename": "src/services/inlayHints.ts",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 1,
+      "patch": "diff --git a/src/services/inlayHints.ts b/src/services/inlayHints.ts\nindex abc123..def456 100644\n--- a/src/services/inlayHints.ts\n+++ b/src/services/inlayHints.ts\n@@ -1,5 +1,5 @@\n-// TypeScript inlay hints implementation\n-// Existing logic handles most cases\n+// TypeScript inlay hints with ? operator support\n \n+// Handle type hints after ? operator in conditional types\n+// Example: T extends string ? param: T"
+    },
+    {
+      "filename": "tests/cases/fourslash/inlayHintsParameterNames.ts",
+      "status": "modified",
+      "additions": 19,
+      "deletions": 0,
+      "patch": "diff --git a/tests/cases/fourslash/inlayHintsParameterNames.ts b/tests/cases/fourslash/inlayHintsParameterNames.ts\nnew file mode 100644\nindex 00000000000..789abc012\n--- /dev/null\n+++ b/tests/cases/fourslash/inlayHintsParameterNames.ts\n@@ -0,0 +1,19 @@\n+/// <reference path='fourslash.ts' />\n+\n+////function foo<T>(x: T): T {\n+////    return x;\n+////}\n+////\n+////type Conditional<T> = T extends string ? (param: T) => void : never;\n+////\n+////// Test with ? operator\n+////const result = foo<number>(/*?*/ 42);\n+////\n+////// Verify inlay hints after ?\n+////verify.inlayHints(undefined, [\n+////    {\n+////        text: 'param:',\n+////        position: 42,\n+////    },\n+////]);"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "results": [
+    {
+      "repo": "biomejs/biome",
+      "num": 4500,
+      "title": "chore(deps): update codspeedhq/action action to v3.1.0",
+      "type": "chore: dependency update",
+      "language": ".yml",
+      "files": 1,
+      "additions": 1,
+      "deletions": 1,
+      "score": 9,
+      "max_score": 12,
+      "pct": 75.0,
+      "issues": [
+        "small-diff: minimal changes — may generate boilerplate output",
+        "mixed-filetypes: code + non-code changes — prompt needs to handle diverse file types",
+        "title: no guidance for chore/docs prefix format",
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 1,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "colinhacks/zod",
+      "num": 3800,
+      "title": "Add 'schemql' in Powered by Zod",
+      "type": "docs: trivial",
+      "language": ".md",
+      "files": 1,
+      "additions": 1,
+      "deletions": 0,
+      "score": 8,
+      "max_score": 12,
+      "pct": 66.66666666666666,
+      "issues": [
+        "small-diff: minimal changes — may generate boilerplate output",
+        "mixed-filetypes: code + non-code changes — prompt needs to handle diverse file types",
+        "title: no guidance for chore/docs prefix format",
+        "change-type: prompt relies on title prefix — should infer from diff pattern",
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 1,
+        "change_type_detection": 1,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "honojs/hono",
+      "num": 3685,
+      "title": "feat(css): add CSP nonce to hono/css related style and scrip",
+      "type": "feat",
+      "language": ".tsx",
+      "files": 7,
+      "additions": 121,
+      "deletions": 13,
+      "score": 12,
+      "max_score": 12,
+      "pct": 100.0,
+      "issues": [],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 2,
+        "impact_scope": 2,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "microsoft/TypeScript",
+      "num": 48283,
+      "title": "fix(48277): Add parameter type inlay hints after ? operator",
+      "type": "feat",
+      "language": ".ts",
+      "files": 2,
+      "additions": 24,
+      "deletions": 1,
+      "score": 11,
+      "max_score": 12,
+      "pct": 91.66666666666666,
+      "issues": [
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 2,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "prisma/prisma",
+      "num": 26000,
+      "title": "chore(deps): update engines to 6.3.0-3.169dafafad6963cbb0345",
+      "type": "chore: dependency update",
+      "language": ".json",
+      "files": 7,
+      "additions": 30,
+      "deletions": 30,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "mixed-filetypes: code + non-code changes — prompt needs to handle diverse file types",
+        "config-changes: dependency/config changes present — prompt should identify 'chore' changes",
+        "title: no guidance for chore/docs prefix format",
+        "tests: diff has no tests — prompt should suggest adding them"
+      ],
+      "scores": {
+        "title_detection": 1,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 2,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "shadcn-ui/ui",
+      "num": 6965,
+      "title": "fix: allow silent mode with npm on React 19",
+      "type": "fix",
+      "language": ".md",
+      "files": 2,
+      "additions": 9,
+      "deletions": 5,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "mixed-filetypes: code + non-code changes — prompt needs to handle diverse file types",
+        "changeset-files: changeset/changelog files present — may confuse change type detection",
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "shadcn-ui/ui",
+      "num": 7196,
+      "title": "fix: do not throw for empty dir",
+      "type": "fix",
+      "language": ".md",
+      "files": 2,
+      "additions": 5,
+      "deletions": 1,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "mixed-filetypes: code + non-code changes — prompt needs to handle diverse file types",
+        "changeset-files: changeset/changelog files present — may confuse change type detection",
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "trpc/trpc",
+      "num": 6000,
+      "title": "fix(deps): update dependency arktype2 to v2.0.0-rc.8",
+      "type": "chore: dependency update",
+      "language": ".json",
+      "files": 2,
+      "additions": 12,
+      "deletions": 12,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "config-changes: dependency/config changes present — prompt should identify 'chore' changes",
+        "title: no guidance for chore/docs prefix format",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 1,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 2,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "vitejs/vite",
+      "num": 20163,
+      "title": "PR #20163",
+      "type": "other",
+      "language": ".ts",
+      "files": 9,
+      "additions": 181,
+      "deletions": 7,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "change-type: prompt relies on title prefix — should infer from diff pattern",
+        "why-inference: PR title is short/empty — prompt must infer from diff alone"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 1,
+        "why_inference": 1,
+        "test_suggestions": 2,
+        "impact_scope": 2,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "vitejs/vite",
+      "num": 9262,
+      "title": "fix: don't modify config during resolution",
+      "type": "fix",
+      "language": ".ts",
+      "files": 1,
+      "additions": 86,
+      "deletions": 86,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "vitejs/vite",
+      "num": 9399,
+      "title": "fix: url constructor import asset no as url",
+      "type": "fix",
+      "language": ".ts",
+      "files": 4,
+      "additions": 15,
+      "deletions": 1,
+      "score": 11,
+      "max_score": 12,
+      "pct": 91.66666666666666,
+      "issues": [
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 2,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    },
+    {
+      "repo": "vitejs/vite",
+      "num": 9425,
+      "title": "fix(glob): server perf when globbing huge dirs",
+      "type": "fix",
+      "language": ".ts",
+      "files": 1,
+      "additions": 4,
+      "deletions": 4,
+      "score": 10,
+      "max_score": 12,
+      "pct": 83.33333333333334,
+      "issues": [
+        "tests: diff has no tests — prompt should suggest adding them",
+        "impact-scope: few files changed — should still list clear scope"
+      ],
+      "scores": {
+        "title_detection": 2,
+        "change_type_detection": 2,
+        "why_inference": 2,
+        "test_suggestions": 1,
+        "impact_scope": 1,
+        "file_table": 2
+      }
+    }
+  ],
+  "summary": {
+    "total_prs": 12,
+    "overall_avg": "84.0%",
+    "category_breakdown": {
+      "chore": "81%",
+      "docs": "67%",
+      "feat": "96%",
+      "fix": "85%",
+      "other": "83%"
+    },
+    "top_issues": [
+      {
+        "issue": "impact-scope",
+        "count": 9
+      },
+      {
+        "issue": "tests",
+        "count": 7
+      },
+      {
+        "issue": "mixed-filetypes",
+        "count": 5
+      },
+      {
+        "issue": "title",
+        "count": 4
+      },
+      {
+        "issue": "small-diff",
+        "count": 2
+      },
+      {
+        "issue": "change-type",
+        "count": 2
+      },
+      {
+        "issue": "config-changes",
+        "count": 2
+      },
+      {
+        "issue": "changeset-files",
+        "count": 2
+      }
+    ]
+  }
+}

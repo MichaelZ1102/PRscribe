@@ -1,0 +1,26 @@
+{
+  "repoFullName": "shadcn-ui/ui",
+  "prNumber": 6965,
+  "prTitle": "fix: allow silent mode with npm on React 19",
+  "prBody": "",
+  "prUrl": "https://github.com/shadcn-ui/ui/pull/6965",
+  "totalAdditions": 9,
+  "totalDeletions": 5,
+  "totalFiles": 2,
+  "files": [
+    {
+      "filename": ".changeset/curly-impalas-give.md",
+      "status": "added",
+      "additions": 5,
+      "deletions": 0,
+      "patch": "diff --git a/.changeset/curly-impalas-give.md b/.changeset/curly-impalas-give.md\nnew file mode 100644\nindex 00000000000..6667f901d3b\n--- /dev/null\n+++ b/.changeset/curly-impalas-give.md\n@@ -0,0 +1,5 @@\n+---\n+\"shadcn\": patch\n+---\n+\n+allow silent mode with npm"
+    },
+    {
+      "filename": "packages/shadcn/src/utils/updaters/update-dependencies.ts",
+      "status": "modified",
+      "additions": 9,
+      "deletions": 5,
+      "patch": "diff --git a/packages/shadcn/src/utils/updaters/update-dependencies.ts b/packages/shadcn/src/utils/updaters/update-dependencies.ts\nindex 8d444530aa7..e4f0570f987 100644\n--- a/packages/shadcn/src/utils/updaters/update-dependencies.ts\n+++ b/packages/shadcn/src/utils/updaters/update-dependencies.ts\n@@ -32,24 +32,28 @@ export async function updateDependencies(\n     // Offer to use --force or --legacy-peer-deps if using React 19 with npm.\n     let flag = \"\"\n     if (isUsingReact19(config) && packageManager === \"npm\") {\n-      dependenciesSpinner.stopAndPersist()\n-      logger.warn(\n-        \"\\nIt looks like you are using React 19. \\nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\\n\"\n-      )\n-      const confirmation = await prompts([\n-        {\n-          type: \"select\",\n-          name: \"flag\",\n-          message: \"How would you like to proceed?\",\n-          choices: [\n-            { title: \"Use --force\", value: \"force\" },\n-            { title: \"Use --legacy-peer-deps\", value: \"legacy-peer-deps\" },\n-          ],\n-        },\n-      ])\n+      if (options.silent) {\n+        flag = \"force\"\n+      } else {\n+        dependenciesSpinner.stopAndPersist()\n+        logger.warn(\n+          \"\\nIt looks like you are using React 19. \\nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\\n\"\n+        )\n+        const confirmation = await prompts([\n+          {\n+            type: \"select\",\n+            name: \"flag\",\n+            message: \"How would you like to proceed?\",\n+            choices: [\n+              { title: \"Use --force\", value: \"force\" },\n+              { title: \"Use --legacy-peer-deps\", value: \"legacy-peer-deps\" },\n+            ],\n+          },\n+        ])\n \n-      if (confirmation) {\n-        flag = confirmation.flag\n+        if (confirmation) {\n+          flag = confirmation.flag\n+        }\n+      }\n     }"
+    }
+  ]
+}
