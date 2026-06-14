@@ -313,20 +313,56 @@ PRscribe/
 └── tests/               # Unit tests
 ```
 
+### Prerequisites
+
+Before you start, you'll need to set up three things:
+
+**1. GitHub App** — https://github.com/settings/apps/new
+
+| Field | Value |
+|:------|:------|
+| App Name | `your-pr-description` (any name) |
+| Homepage URL | `http://localhost:3000` |
+| Webhook URL | `http://localhost:3000/api/v1/webhook` |
+| Webhook Secret | Generate a random string (save this!) |
+| Permissions | Pull requests: **Read & Write**, Contents: **Read**, Issues: **Read & Write** |
+| Events | [x] **Pull request** |
+
+After creation, download the **Private Key** (`.pem` file) and note the **App ID**.
+
+**2. LLM API Key** — Any OpenAI-compatible provider:
+
+| Provider | Sign Up | Cost |
+|:---------|:--------|:-----|
+| OpenAI | https://platform.openai.com | $0.15/M tokens |
+| DeepSeek | https://platform.deepseek.com | ¥0.5/M tokens |
+| Groq | https://console.groq.com | Free |
+
+**3. Redis** — Create a free instance at https://console.upstash.com → Create Database → Copy the `REDIS_URL`.
+
 ### Local Development
 
 ```bash
-# 1. Install dependencies
+# 1. Clone & install
+git clone https://github.com/MichaelZ1102/PRscribe.git
+cd PRscribe
 pnpm install
 
 # 2. Configure environment
 cp .env.example .env
-# Edit .env with your GitHub App credentials, LLM API key, and Redis URL
+# Edit .env with your credentials:
+#   - GITHUB_APP_ID, GITHUB_PRIVATE_KEY, GITHUB_WEBHOOK_SECRET
+#   - LLM_API_KEY, LLM_BASE_URL, LLM_MODEL
+#   - REDIS_URL
 
-# 3. Start the service
+# 3. Start ngrok (for webhook forwarding)
+npx localtunnel --port 3000
+# → https://xxx.loca.lt  ← update GitHub App Webhook URL to this
+
+# 4. Start the service
 pnpm dev
 
-# 4. Verify
+# 5. Verify
 curl http://localhost:3000/api/v1/health
 # → {"status":"ok","checks":{"redis":"connected","github_app":"valid"}}
 ```
@@ -350,6 +386,12 @@ curl http://localhost:3000/api/v1/health
 | [Deployment Guide](./docs/deployment.md) | Production deployment instructions |
 | [Tech Stack](./docs/tech-stack.md) | Technology choices and rationale |
 | [Developer Guide](./docs/developer-guide.md) | Guide for end-user developers |
+
+---
+
+### 📖 Also available in Chinese
+
+[![中文](https://img.shields.io/badge/README-%E4%B8%AD%E6%96%87-blue)](./README.zh-CN.md)
 
 ---
 
