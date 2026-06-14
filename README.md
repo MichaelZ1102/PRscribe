@@ -280,23 +280,18 @@ PRscribe is **free to use as-is** during the beta period. No credit card require
 
 Your support helps cover AI API costs and keeps the project alive. 🙏
 
-### Free AI Model Option
+### Flexible LLM Provider
 
-To avoid using your own API credits during evaluation, PRscribe supports **Groq's free API**:
+PRscribe supports any OpenAI-compatible API. You can switch the underlying model at any time by changing environment variables — no code changes needed.
 
 ```env
-LLM_API_KEY=***your free groq key***
-LLM_BASE_URL=https://api.groq.com/openai/v1
-LLM_MODEL=llama-3.3-70b-versatile
+# Examples:
+LLM_API_KEY=your-api-key
+LLM_BASE_URL=https://api.openai.com/v1       # OpenAI
+LLM_BASE_URL=https://api.deepseek.com/v1      # DeepSeek
+LLM_BASE_URL=https://api.groq.com/openai/v1   # Groq (free)
+LLM_MODEL=gpt-4o-mini                          # Model name
 ```
-
-| Provider | Cost | Quality | Limit |
-|:---------|:----:|:-------:|:------|
-| **Groq** (free) | **$0** | ⭐⭐⭐ | 30 req/min |
-| **OpenAI mini** | $0.15/M tokens | ⭐⭐⭐⭐⭐ | None |
-| **DeepSeek** | ¥0.5/M tokens | ⭐⭐⭐⭐ | None |
-
-> Get your free Groq API key: https://console.groq.com → API Keys
 
 ---
 

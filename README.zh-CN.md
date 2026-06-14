@@ -281,23 +281,18 @@ PRscribe 在测试期间 **完全免费使用**，无需信用卡，无使用次
 
 你的赞助帮助覆盖 AI API 成本，让项目持续发展。🙏
 
-### 免费 AI 模型选项
+### 灵活切换模型
 
-如果你不想在评估阶段消耗自己的 API 额度，PRscribe 支持 **Groq 的免费 API**：
+PRscribe 支持任何 OpenAI 兼容的 API。你随时可以通过改环境变量切换底层模型，代码不需要任何修改：
 
 ```env
-LLM_API_KEY=***你的免费 Groq Key***
-LLM_BASE_URL=https://api.groq.com/openai/v1
-LLM_MODEL=llama-3.3-70b-versatile
+# 示例：
+LLM_API_KEY=your-api-key
+LLM_BASE_URL=https://api.openai.com/v1       # OpenAI
+LLM_BASE_URL=https://api.deepseek.com/v1      # DeepSeek（极便宜）
+LLM_BASE_URL=https://api.groq.com/openai/v1   # Groq（免费）
+LLM_MODEL=gpt-4o-mini                          # 模型名
 ```
-
-| 服务商 | 费用 | 质量 | 限制 |
-|:-------|:----:|:----:|:-----|
-| **Groq**（免费） | **$0** | ⭐⭐⭐ | 每分钟 30 次 |
-| **OpenAI mini** | $0.15/M token | ⭐⭐⭐⭐⭐ | 无 |
-| **DeepSeek** | ¥0.5/M token | ⭐⭐⭐⭐ | 无 |
-
-> 免费 Groq Key 申请地址：https://console.groq.com → API Keys
 
 ---
 
