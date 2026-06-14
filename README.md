@@ -276,7 +276,7 @@ PRscribe is **free to use as-is** during the beta period. No credit card require
 >
 > If PRscribe saves you time, consider supporting the project:
 >
-> *WeChat Pay QR code — coming soon*
+> <img src="./assets/wechat-pay.jpg" width="200" alt="WeChat Pay QR Code">
 
 Your support helps cover AI API costs and keeps the project alive. 🙏
 
