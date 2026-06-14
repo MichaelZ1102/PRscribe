@@ -7,7 +7,6 @@ import { registerHandler, routeEvent } from './event-router.js';
 import { checkRepoRateLimit } from '../middleware/rate-limiter.js';
 import type { QueueJobData } from '../types/index.js';
 
-// 延迟初始化，确保 dotenv 已加载
 let webhooksInstance: Webhooks | null = null;
 
 function getWebhooks(): Webhooks {
@@ -18,7 +17,7 @@ function getWebhooks(): Webhooks {
   return webhooksInstance;
 }
 
-// ===== 事件处理器注册 =====
+// ===== 事件处理器 =====
 
 registerHandler({
   event: 'pull_request',
@@ -29,7 +28,6 @@ registerHandler({
     const pullNumber = payload.pull_request.number;
     const deliveryId = _deliveryId;
 
-    // 仓库级别限流
     if (redis) {
       const ok = await checkRepoRateLimit(redis, owner, repo);
       if (!ok) {
@@ -38,25 +36,19 @@ registerHandler({
       }
     }
 
-    // 入队
     const queue = createQueue();
     await queue.add('generate-pr-description', {
       installationId: payload.installation?.id,
-      owner,
-      repo,
-      pullNumber,
+      owner, repo, pullNumber,
       action: payload.action,
-      deliveryId,
-      attempt: 1,
+      deliveryId, attempt: 1,
     } as QueueJobData);
 
     console.log(`[Webhook] PR #${pullNumber} ${payload.action} → 已入队列`);
 
-    // 标记 delivery_id（TTL 24h）
     if (redis) {
       await redis.set(`delivery:${deliveryId}`, '1', 'EX', 86400);
     }
-
     return true;
   },
 });
@@ -80,59 +72,61 @@ registerHandler({
     } else if (redis && action === 'deleted') {
       await redis.del(`installation:${installationId}`);
     }
-
     if (redis) {
       await redis.set(`delivery:${deliveryId}`, '1', 'EX', 86400);
     }
-
     return true;
   },
 });
 
-// ===== Webhook 端点 =====
+// ===== Webhook 端点（带错误捕获） =====
 
 export async function handleWebhook(c: Context): Promise<Response> {
-  const body = await c.req.text();
-  const signature = c.req.header('x-hub-signature-256');
-  const eventType = c.req.header('x-github-event');
-  const deliveryId = c.req.header('x-github-delivery');
-
-  // 1. 签名验证
-  if (!signature) {
-    return c.json({ error: { code: 'INVALID_SIGNATURE', message: 'Missing signature', status: 400 } }, 400);
-  }
-
   try {
-    await getWebhooks().verify(body, signature);
-  } catch {
-    return c.json({ error: { code: 'INVALID_SIGNATURE', message: 'Signature verification failed', status: 400 } }, 400);
-  }
+    const body = await c.req.text();
+    const signature = c.req.header('x-hub-signature-256');
+    const eventType = c.req.header('x-github-event');
+    const deliveryId = c.req.header('x-github-delivery');
 
-  if (!eventType || !deliveryId) {
-    return c.json({ error: { code: 'MISSING_HEADER', message: 'Missing x-github-event or x-github-delivery', status: 400 } }, 400);
-  }
-
-  // 2. 幂等性检查（复用长连接）
-  const redis = await createRedisClient();
-  if (redis) {
-    const alreadyProcessed = await redis.get(`delivery:${deliveryId}`);
-    if (alreadyProcessed) {
-      return c.json({ error: { code: 'IDEMPOTENCY_REPLAY', message: 'Event already processed', status: 200 } }, 200);
+    if (!signature) {
+      return c.json({ error: { code: 'INVALID_SIGNATURE', message: 'Missing signature', status: 400 } }, 400);
     }
-  }
 
-  // 3. 路由事件（注意：不再 closeRedis，保持长连接）
-  try {
+    try {
+      await getWebhooks().verify(body, signature);
+    } catch {
+      return c.json({ error: { code: 'INVALID_SIGNATURE', message: 'Signature verification failed', status: 400 } }, 400);
+    }
+
+    if (!eventType || !deliveryId) {
+      return c.json({ error: { code: 'MISSING_HEADER', message: 'Missing x-github-event or x-github-delivery', status: 400 } }, 400);
+    }
+
+    const redis = await createRedisClient();
+    if (redis) {
+      const alreadyProcessed = await redis.get(`delivery:${deliveryId}`);
+      if (alreadyProcessed) {
+        return c.json({ error: { code: 'IDEMPOTENCY_REPLAY', message: 'Event already processed', status: 200 } }, 200);
+      }
+    }
+
     const payload = JSON.parse(body);
     const handled = await routeEvent(eventType, payload, deliveryId, redis);
 
     if (!handled) {
       console.log(`[Webhook] 未处理的事件: ${eventType}/${payload.action}`);
     }
-  } catch (err) {
-    console.error('[Webhook] payload 解析失败:', err);
-    return c.json({ error: { code: 'INVALID_PAYLOAD', message: 'Invalid JSON payload', status: 400 } }, 400);
-  }
 
-  return c.json({ status: 'accepted', message: 'Webhook received', deliveryId }, 202);
+    return c.json({ status: 'accepted', message: 'Webhook received', deliveryId }, 202);
+
+  } catch (err: any) {
+    console.error('[Webhook] 未捕获错误:', err.message, err.stack);
+    return c.json({
+      error: {
+        code: 'WEBHOOK_ERROR',
+        message: err.message || 'Internal server error',
+        status: 500,
+      },
+    }, 500);
+  }
 }

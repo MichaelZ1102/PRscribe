@@ -1,7 +1,7 @@
 import type { Context } from 'hono';
 import type { StatusCode } from 'hono/utils/http-status';
+import { loadConfig } from '../config.js';
 
-// 统一错误响应格式
 export interface ErrorResponse {
   error: {
     code: string;
@@ -16,12 +16,16 @@ export async function errorHandler(c: Context, next: () => Promise<void>) {
     await next();
   } catch (err) {
     const error = err as Error;
-    console.error(`[ERROR] ${error.message}`, error.stack);
+    // 只在开发环境暴露详细信息
+    const config = loadConfig();
+    const isDev = config.nodeEnv === 'development';
+
+    console.error('[ERROR]', error.message, error.stack);
 
     const response: ErrorResponse = {
       error: {
         code: 'INTERNAL_ERROR',
-        message: 'An unexpected error occurred',
+        message: isDev ? error.message : 'An unexpected error occurred',
         status: 500,
       },
     };

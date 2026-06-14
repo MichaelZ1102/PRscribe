@@ -51,5 +51,5 @@ export async function routeEvent(
  * 获取已注册的所有事件类型
  */
 export function getRegisteredEvents(): string[] {
-  return [...new Set(handlers.map((h) => h.event))];
+  return Array.from(new Set(handlers.map((h) => h.event)));
 }
