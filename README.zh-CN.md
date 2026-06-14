@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://via.placeholder.com/120x120?text=PR" alt="PRscribe logo" width="120">
+  <img src="./assets/logo.svg" alt="PRscribe" width="120">
 </p>
 
 <h1 align="center">PRscribe</h1>
