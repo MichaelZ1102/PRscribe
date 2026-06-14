@@ -270,12 +270,33 @@ Include `[skip pr]` in the PR title or body.
 
 ### Pricing
 
-| Plan | Price | Features |
-|:-----|:-----:|:---------|
-| **Free** | $0 | 5 generations/month |
-| **Pro** | $9/mo | Unlimited, private repos |
-| **Team** | $49/mo | Custom templates, analytics |
-| **Enterprise** | $199/mo | Self-hosted, SSO, audit logs |
+PRscribe is **free to use as-is** during the beta period. No credit card required, no usage limits.
+
+> 💖 **Support development**
+>
+> If PRscribe saves you time, consider supporting the project:
+>
+> [![GitHub Sponsors](https://img.shields.io/badge/sponsor-30363D?logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/MichaelZ1102) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/michaelz1102)
+
+Your support helps cover AI API costs and keeps the project alive. 🙏
+
+### Free AI Model Option
+
+To avoid using your own API credits during evaluation, PRscribe supports **Groq's free API**:
+
+```env
+LLM_API_KEY=***your free groq key***
+LLM_BASE_URL=https://api.groq.com/openai/v1
+LLM_MODEL=llama-3.3-70b-versatile
+```
+
+| Provider | Cost | Quality | Limit |
+|:---------|:----:|:-------:|:------|
+| **Groq** (free) | **$0** | ⭐⭐⭐ | 30 req/min |
+| **OpenAI mini** | $0.15/M tokens | ⭐⭐⭐⭐⭐ | None |
+| **DeepSeek** | ¥0.5/M tokens | ⭐⭐⭐⭐ | None |
+
+> Get your free Groq API key: https://console.groq.com → API Keys
 
 ---
 

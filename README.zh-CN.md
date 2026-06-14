@@ -269,12 +269,35 @@ PRscribe 生成统一的 Markdown 格式描述：
 
 ### 定价
 
-| 套餐 | 价格 | 功能 |
-|:-----|:----:|:------|
-| **Free** | $0 | 每月 5 次生成 |
-| **Pro** | $9/月 | 无限次，私有仓库 |
-| **Team** | $49/月 | 自定义模板，统计 |
-| **Enterprise** | $199/月 | 私有化部署，SSO |
+PRscribe 在测试期间 **完全免费使用**，无需信用卡，无使用次数限制。
+
+> 💖 **支持开发**
+>
+> 如果 PRscribe 为你节省了时间，欢迎赞助支持项目：
+>
+> [![GitHub Sponsors](https://img.shields.io/badge/sponsor-30363D?logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/MichaelZ1102)
+> [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/michaelz1102)
+> 也可通过微信或支付宝扫码赞助（联系作者获取二维码）
+
+你的赞助帮助覆盖 AI API 成本，让项目持续发展。🙏
+
+### 免费 AI 模型选项
+
+如果你不想在评估阶段消耗自己的 API 额度，PRscribe 支持 **Groq 的免费 API**：
+
+```env
+LLM_API_KEY=***你的免费 Groq Key***
+LLM_BASE_URL=https://api.groq.com/openai/v1
+LLM_MODEL=llama-3.3-70b-versatile
+```
+
+| 服务商 | 费用 | 质量 | 限制 |
+|:-------|:----:|:----:|:-----|
+| **Groq**（免费） | **$0** | ⭐⭐⭐ | 每分钟 30 次 |
+| **OpenAI mini** | $0.15/M token | ⭐⭐⭐⭐⭐ | 无 |
+| **DeepSeek** | ¥0.5/M token | ⭐⭐⭐⭐ | 无 |
+
+> 免费 Groq Key 申请地址：https://console.groq.com → API Keys
 
 ---
 
