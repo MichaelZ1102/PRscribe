@@ -8,9 +8,14 @@ import { healthRoute } from './routes/health.js';
 import { webhookRoute } from './routes/webhook.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { startConsumer } from './queue/consumer.js';
+import { createQueue } from './queue/producer.js';
 import { closeRedis } from './queue/redis.js';
 
 const config = loadConfig();
+
+// 预初始化队列（避免 Webhook 请求时创建连接导致超时）
+createQueue();
+console.log('[Queue] 队列已预初始化');
 
 // Sentry 初始化
 if (config.sentry?.dsn) {
