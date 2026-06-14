@@ -275,9 +275,7 @@ PRscribe 在测试期间 **完全免费使用**，无需信用卡，无使用次
 >
 > 如果 PRscribe 为你节省了时间，欢迎赞助支持项目：
 >
-> [![GitHub Sponsors](https://img.shields.io/badge/sponsor-30363D?logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/MichaelZ1102)
-> [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/michaelz1102)
-> 也可通过微信或支付宝扫码赞助（联系作者获取二维码）
+> *微信收款码 — 即将上线*
 
 你的赞助帮助覆盖 AI API 成本，让项目持续发展。🙏
 

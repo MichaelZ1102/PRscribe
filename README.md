@@ -276,7 +276,7 @@ PRscribe is **free to use as-is** during the beta period. No credit card require
 >
 > If PRscribe saves you time, consider supporting the project:
 >
-> [![GitHub Sponsors](https://img.shields.io/badge/sponsor-30363D?logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/MichaelZ1102) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/michaelz1102)
+> *WeChat Pay QR code — coming soon*
 
 Your support helps cover AI API costs and keeps the project alive. 🙏
 
